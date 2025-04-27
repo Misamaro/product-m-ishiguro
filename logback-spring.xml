@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+<configuration>
+
+    <!-- コンソール出力 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%m</pattern>
+        </encoder>
+    </appender>
+
+    <!-- アプリケーションログのファイル書き出し -->
+    <appender name="APPLIATION_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--ファイル名設定 -->
+        <file>C:/logs/app.log</file>
+        <!--ログファイルのローテーション設定 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>C:/logs/app-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <!--ログ出力フォーマット設定 -->
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%m</pattern>
+        </encoder>
+    </appender>
+
+    <!-- ロガー -->
+    <logger name="appLogger" level="INFO">
+    <appender-ref ref="APPLICATION_LOG" />
+    </logger>
+    
+
+    <!-- ルート -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

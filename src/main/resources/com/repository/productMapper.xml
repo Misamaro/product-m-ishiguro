@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.repository.ProductMapper">
+    <select id="searchAll" resultType="com.entity.Product">
+        SELECT 
+            p.id,
+            p.prod_name,
+            p.quantity,
+            p.price,
+            p.delete_flg,
+            p.update_date,
+            p.create_date
+        FROM
+            product p
+        WHERE
+            p.delete_flg IS false
+        ORDER BY p.id
+    </select>
+</mapper>
